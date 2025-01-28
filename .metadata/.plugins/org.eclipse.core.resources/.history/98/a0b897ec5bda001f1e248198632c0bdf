@@ -1,0 +1,13 @@
+package pageObject;
+
+public class AirIndiatHomepage {
+	
+	
+	WebDriver driver;
+	
+	public AirIndiatHomepage(WebDriver driver)
+	{
+		this.driver=driver;
+	}
+
+}

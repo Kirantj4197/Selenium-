@@ -1,0 +1,13 @@
+package pageObject;
+
+import org.openqa.selenium.WebDriver;
+
+public class RHHomePage extends BasePage{
+
+	WebDriver driver;
+	
+	public RHHomepage(WebDriver driver)
+	{
+		super(driver);
+	}
+}

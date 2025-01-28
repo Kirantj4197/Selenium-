@@ -1,0 +1,14 @@
+package utilities;
+
+public class DataProviders {
+	
+	
+	@DataProvider(name="LoginData")
+	public void getData()
+	{
+	String path=".\\testData\\";
+	XLUtility xl=new XLUtility(path);
+	xl
+	
+	}
+}

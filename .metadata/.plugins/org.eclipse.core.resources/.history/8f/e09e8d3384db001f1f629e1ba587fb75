@@ -1,0 +1,31 @@
+package testCases;
+
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import pageObject.AirIndiaHomepage;
+import pageObject.RHHomePage;
+import testBase.BaseClass;
+
+public class TC_RHLogin extends BaseClass{
+	
+
+	
+	@Test
+	public void someTest()
+	{
+		
+		logger.info("Starting e commerce things");
+		driver.get("https://rahulshettyacademy.com/client");
+	   
+		RHHomePage rh=new RHHomePage(driver);
+		
+		
+	}
+
+}

@@ -1,0 +1,15 @@
+package excel;
+
+import java.util.Properties;
+
+public class PropertiesLoad {
+
+	public static void main(String[] args) {
+	
+		FileInputStream fon=new FileInputStream()
+		Properties pro=new Properties();
+		
+
+	}
+
+}

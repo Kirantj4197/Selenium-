@@ -1,0 +1,13 @@
+package excel;
+
+public class PropertiesLoad {
+
+	public static void main(String[] args) {
+	
+		
+		Properties pro=new Properties();
+		
+
+	}
+
+}

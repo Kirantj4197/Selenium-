@@ -1,0 +1,7 @@
+package utilities;
+
+public class DataProviders {
+	
+	String path=".\\testData\\"
+
+}

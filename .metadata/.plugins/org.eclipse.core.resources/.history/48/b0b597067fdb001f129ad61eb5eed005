@@ -1,0 +1,20 @@
+package utilities;
+
+import java.io.IOException;
+
+import org.testng.annotations.DataProvider;
+
+public class DataProviders {
+	
+	
+	@DataProvider(name="LoginData")
+	public void getData() throws IOException
+	{
+	String path=".\\testData\\";
+	XLUtility xl=new XLUtility(path);
+	xl.getRowCount("Sheet1");
+	xl.getCellCount("Sheet1",1);
+	
+	
+	}
+}

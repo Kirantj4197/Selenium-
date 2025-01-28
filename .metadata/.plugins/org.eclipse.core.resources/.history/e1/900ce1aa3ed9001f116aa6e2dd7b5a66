@@ -1,0 +1,62 @@
+package excel;
+
+import java.io.IOException;
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class FDCalculator {
+
+	public static void main(String[] args) throws IOException {
+		System.setProperty("webdriver.chrome.driver","D:\\chromedriver-win64\\chromedriver.exe");
+		
+
+		
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+	    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+	    driver.get("https://www.moneycontrol.com/fixed-income/calculator/state-bank-of-india/fixed-deposit-calculator-SBI-BSB001.html");
+	    
+	    String path=System.getProperty("user.dir")+"\\testData\\calculator.xlsx";
+	    int rows=ExcelUtils.getRowCount(path,"Sheet1");
+	    
+	    for(int i=1;i<=rows;i++)
+	    {
+	    	String prin=ExcelUtils.getCellData(path, "Sheet1", i, 0);
+	    	String roi=ExcelUtils.getCellData(path, "Sheet1", i, 1);
+	    	String per1=ExcelUtils.getCellData(path, "Sheet1", i, 2);
+	    	String per2=ExcelUtils.getCellData(path, "Sheet1", i, 3);
+	    	String fre=ExcelUtils.getCellData(path, "Sheet1", i, 4);
+	    	String exp_maturity=ExcelUtils.getCellData(path, "Sheet1", i, 5);
+	    	
+	    	driver.findElement(By.cssSelector("#principal")).sendKeys(prin);
+	    	driver.findElement(By.cssSelector("#interest")).sendKeys(roi);
+	    	driver.findElement(By.cssSelector("#tenure")).sendKeys(per1);
+	    	WebElement drpDown=driver.findElement(By.cssSelector("select[name='tenurePeriod']"));
+	    	
+	    	Select s=new Select(drpDown);
+	    	s.selectByVisibleText(per2);
+	    	
+	    	WebElement frequency=driver.findElement(By.cssSelector("select[name='frequency']"));
+	    	
+	    	Select sel=new Select(frequency);
+	    	sel.selectByVisibleText(fre);
+	    	driver.findElement(By.xpath("//a[@onclick='return getfdMatVal(this);']")).click();
+	    	
+	   String act_maturity=driver.findElement(By.xpath("//span[@class='gL_27']//strong")).getText();
+	   
+	   if(Double.parseDouble(act_maturity)==Double.parseDouble(exp_maturity))
+	   {
+		   System.out.println("passed");
+		   
+	   }
+	    	
+	    }
+
+	}
+
+}

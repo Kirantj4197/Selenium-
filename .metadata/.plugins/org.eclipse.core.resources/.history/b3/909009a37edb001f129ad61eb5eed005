@@ -1,0 +1,9 @@
+package utilities;
+
+public class DataProviders {
+	
+	String path=".\\testData\\";
+	XlUtility xl=new XLUtility();
+	
+
+}

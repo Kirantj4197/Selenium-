@@ -1,0 +1,17 @@
+package testCases;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.BeforeClass;
+
+public class TC_TicketBooking {
+	
+	WebDriver driver;
+	
+	@BeforeClass
+	public void setUp()
+	{
+		driver=new ChromeDriver();
+		
+	}
+
+}

@@ -1,0 +1,65 @@
+package excel;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Scanner;
+
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class WritingDynamicData {
+	
+	public static void main  (String args[]) throws IOException
+	{
+		
+		
+		XSSFWorkbook book=new XSSFWorkbook();
+		
+		
+		XSSFSheet sheet=book.createSheet("dynamicData");
+		Scanner sc=new Scanner(System.in);
+		System.out.println("eneter rows");
+		int noOfRows=sc.nextInt();
+		System.out.println("eneter columns");
+		int noOfCols=sc.nextInt();
+		
+		for(int r=0;r<=noOfRows;r++)
+			
+		{
+			
+			XSSFRow currentRow=sheet.createRow(r);
+			for(int c=0;c<noOfCols;c++)
+			{
+				XSSFCell curCell= currentRow.createCell(c);
+			}
+			
+		}
+		
+	
+		
+		row1.createCell(1).setCellValue("musiri");
+		
+		XSSFRow row2=sheet.createRow(1);
+		row2.createCell(0).setCellValue(123);
+		row2.createCell(1).setCellValue("musiri");
+		row2.createCell(2).setCellValue(true);
+		
+		XSSFRow row3=sheet.createRow(2);
+		row3.createCell(0).setCellValue(1235);
+		row3.createCell(1).setCellValue("musiri trichy");
+		row3.createCell(2).setCellValue(12.0);
+		
+		FileOutputStream file=new FileOutputStream(System.getProperty("user.dir")+"\\testData\\dynamic.xlsx");
+		book.write(file);
+		book.close();
+		file.close();
+		
+		
+	
+	}
+
+}

@@ -1,0 +1,19 @@
+package excel;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class DataDriven {
+	
+	public static void main  (String args[]) throws FileNotFoundException
+	{
+		
+		FileInputStream fin=new FileInputStream(System.getProperty("user.dir")+"\\testData\\Data.xlsx");
+		XSSFWorkbook book=new XSSFWorkbook(fin);
+		
+		
+	}
+
+}

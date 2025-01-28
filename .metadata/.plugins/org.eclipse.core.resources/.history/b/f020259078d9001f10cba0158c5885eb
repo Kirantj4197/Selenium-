@@ -1,0 +1,17 @@
+package excel;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Properties;
+
+public class PropertiesLoad {
+
+	public static void main(String[] args) throws FileNotFoundException {
+	
+		FileInputStream fon=new FileInputStream(System.getProperty("user.dir")+"\\testData\\input.properties");
+		Properties pro=new Properties();
+		
+
+	}
+
+}

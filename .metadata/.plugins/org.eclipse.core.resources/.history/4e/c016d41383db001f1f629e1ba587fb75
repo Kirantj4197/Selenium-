@@ -1,0 +1,20 @@
+package pageObject;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class RHHomePage extends BasePage{
+
+	WebDriver driver;
+	
+	public RHHomePage(WebDriver driver)
+	{
+		super(driver);
+	}
+	
+	@FindBy(css="#userEmail")
+	WebElement userName;
+	
+	@FindBy()
+	WebElement pwd;
+}
