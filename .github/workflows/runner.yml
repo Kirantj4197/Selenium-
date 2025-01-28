@@ -34,7 +34,7 @@ jobs:
         run: mvn install -DskipTests
 
       - name: Set up ChromeDriver
-        uses: actions/setup-chromedriver@v2
+        uses: wzieba/action-setup-chromedriver@v2
         with:
           chromedriver-version: 'latest'
 
