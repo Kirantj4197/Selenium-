@@ -20,6 +20,11 @@ public class AllElementsPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	public void git()
+	{
+		System.out.println("i'm here");
+	}
 
 	
 	
