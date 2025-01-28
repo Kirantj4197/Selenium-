@@ -23,7 +23,7 @@ public class AllElementsPage extends BasePage {
 	
 	public void git()
 	{
-		System.out.println("i'm here");
+		System.out.println("git hub");
 	}
 
 	
