@@ -1,4 +1,4 @@
-name: Run Selenium Tests on Windows
+name: Selenium Tests with ExtentReports
 
 on:
   push:
@@ -9,48 +9,35 @@ on:
       - master
 
 jobs:
-  test:
+  selenium_tests:
     runs-on: windows-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      # Check out the repository
+      - name: Check out code
+        uses: actions/checkout@v2
 
+      # Set up Java (if you're using Java)
       - name: Set up JDK 11
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v2
         with:
           java-version: '11'
-          distribution: 'adoptopenjdk'
 
-      - name: Cache Maven dependencies
-        uses: actions/cache@v3
-        with:
-          path: C:\Users\runneradmin\.m2\repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
+      # Install Google Chrome and ChromeDriver manually
+      - name: Install Google Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget curl
+          sudo apt-get install -y google-chrome-stable
 
-      - name: Install dependencies with Maven
-        run: mvn install -DskipTests
+      - name: Install ChromeDriver
+        run: |
+          CHROME_DRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
+          wget https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip
+          sudo mv chromedriver /usr/local/bin/chromedriver
+          sudo chown root:root /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
 
-      - name: Set up ChromeDriver
-        uses: browser-actions/setup-chrome@v2
-        with:
-          chrome-version: 'latest'
-          chromedriver-version: 'latest' 
-
-
-      - name: Run Selenium Tests
+      # Run Selenium tests (using Maven in this example)
+      - name: Run Selenium tests
         run: mvn test
-
-      - name: Upload ExtentReports Results
-        uses: actions/upload-artifact@v3
-        with:
-          name: extent-reports
-          path: target/extent-report/
-
-      - name: Upload Test Results
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-results
-          path: target/surefire-reports/
