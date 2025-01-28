@@ -40,3 +40,4 @@ jobs:
       # Run Selenium tests (using Maven in this example)
       - name: Run Selenium tests
         run: mvn test
+        working-directory: ./SeleniumE2E
